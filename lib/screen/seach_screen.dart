@@ -53,7 +53,64 @@ class SearchTextBar extends StatelessWidget {
   }
 }
 
-final gridItems = List.generate(100, (index) => Colors.blue.shade300);
+final gridItems = [
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+  const GridData(imageUrl: 'https://picsum.photos/seed/picsum/80/80'),
+];
+
+class GridData{
+  final String imageUrl;
+
+  const GridData({
+    required this.imageUrl,
+  });
+}
 
 class SearchGrid extends StatelessWidget {
   const SearchGrid({super.key});
@@ -62,16 +119,40 @@ class SearchGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      padding: const EdgeInsets.all(8),
-      mainAxisSpacing: 4 ,
-      crossAxisSpacing: 4,
-      crossAxisCount: 3,
+    return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      children: gridItems.map((color) => Container(color: color)).toList(),
+      padding: const EdgeInsets.all(8),
+      itemCount: gridItems.length,
+      itemBuilder: (context, index) => GridItem(gridData: gridItems[index]),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing:4,
+        mainAxisSpacing: 4,
+      ),
     );
   }
 }
+
+class GridItem extends StatelessWidget {
+  final GridData gridData;
+  const GridItem({required this.gridData ,super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.blue.shade300,
+      ),
+      width: 80,
+      height: 80,
+      child: Image.network(
+        gridData.imageUrl,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+}
+
 
 

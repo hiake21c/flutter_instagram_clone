@@ -158,6 +158,7 @@ class FeedItem extends StatelessWidget {
           width: double.infinity,
           height: 380,
           color: Colors.blue.shade100,
+          child: Image.network('https://picsum.photos/seed/picsum/400/400', fit: BoxFit.cover,),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
